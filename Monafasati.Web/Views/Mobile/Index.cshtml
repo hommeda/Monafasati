@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Monafasati.Web.ViewModel.MobileViewModel
+<div class="card text-center">
+    <div class="card-header">
+        <h2>منافساتي</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            
+           
+            @foreach (var item in Model.status)
+            {
+
+
+                <div class="col-4">
+                    <img alt="Monafasta" class="img-thumbnail rounded-circle" src="~/Image/Icons/ايقونات حرة 2020-02.png" />
+
+                    <a asp-action="List" asp-route-id="@item.Id"> <h6>@item.Name <span class="badge badge-danger">@Model.StatusCount[Model.Count++]</span></h6></a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="card-footer"></div>
+</div>
+
+<div class="card text-center">
+    <div class="card-header">
+        <h2>عرض حسب المسؤول</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            @foreach (var item in Model.engineers)
+            {
+            <div class="col-4">
+                <img alt="Monafasta" class="img-thumbnail " src="~/Image/Icons/person-male.png" />
+
+                <a asp-action="ListByEng" asp-route-id="@item.Id"> <h6>@item.Name</h6></a>
+            </div>
+
+            }
+
+        </div>
+    </div>
+    <div class="card-footer"></div>
+</div>

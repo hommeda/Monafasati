@@ -1,0 +1,31 @@
+﻿@model Monafasati.Core.Entity.Monafsa
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class=" row text-right float-right">
+    <h1>حذف</h1>
+
+    <h3>هل انت متاكد من انك تريد حذف هذة المناقصة ؟</h3>
+    <div>
+        <h2 class="text-warning"> @Html.DisplayFor(model => model.Name)</h2>
+    </div>
+    <hr />
+</div>
+        <dl>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+               
+            </dd>
+
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            <a asp-action="Index" asp-controller="Home">عودة</a>
+        </form>
+   

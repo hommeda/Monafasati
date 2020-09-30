@@ -1,0 +1,131 @@
+﻿@model Monafasati.Core.Entity.Item
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>Edit</h1>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ItemCode" class="control-label"></label>
+                <input asp-for="ItemCode" class="form-control" />
+                <span asp-validation-for="ItemCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Count" class="control-label"></label>
+                <input asp-for="Count" class="form-control" />
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyPrice" class="control-label"></label>
+                <input asp-for="BuyPrice" class="form-control" />
+                <span asp-validation-for="BuyPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonafsaId" class="control-label"></label>
+                <select asp-for="MonafsaId" class="form-control" asp-items="ViewBag.MonafsaId"></select>
+                <span asp-validation-for="MonafsaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitsId" class="control-label"></label>
+                <select asp-for="UnitsId" class="form-control" asp-items="ViewBag.UnitsId"></select>
+                <span asp-validation-for="UnitsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+<div class="row text-center">
+    <div class="card col-md-12">
+        <div class="card-header">
+          <p class="card-title">@Html.DisplayNameFor(l=>l.MonafsaId)</p>
+            <p class="card-subtitle">@Model.Monafsa.Name</p>
+        </div>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+          
+                <div class="row">
+
+
+                    <div class="form-group col-md-2">
+                        <label asp-for="ItemCode" class="control-label"></label>
+                        <input asp-for="ItemCode" class="form-control" />
+                        <span asp-validation-for="ItemCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label asp-for="Name" class="control-label"></label>
+                        <textarea cols="25" rows="3" asp-for="Name" class="form-control"></textarea>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="UnitsId" class="control-label"></label>
+                        <select asp-for="UnitsId" class="form-control" asp-items="ViewBag.UnitsId"></select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Count" class="control-label"></label>
+                        <input asp-for="Count" class="form-control" />
+                        <span asp-validation-for="Count" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="BuyPrice" class="control-label"></label>
+                        <input asp-for="BuyPrice" class="form-control" />
+                        <span asp-validation-for="BuyPrice" class="text-danger"></span>
+                    </div>
+                </div>
+            <input type="hidden" asp-for="MonafsaId" />
+            @*<div class="form-group">
+                <label asp-for="MonafsaId" class="control-label"></label>
+                <select asp-for="MonafsaId" class="form-control" asp-items="ViewBag.MonafsaId"></select>
+            </div>*@
+
+            <div class="form-group">
+                <input type="submit" value="حفظ " class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

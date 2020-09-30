@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.UserName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var User in Model)
+        {
+            <tr>
+                <td>@User.Email</td>
+                <td>@User.Id</td>
+                <td>@User.UserName</td>
+            </tr>
+        }
+    </tbody>
+</table>

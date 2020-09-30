@@ -1,0 +1,67 @@
+﻿@model Monafasati.Data.ModelDto.ItemDto
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-right">
+    <h4>@Model.Monafsa.Name</h4>
+</div>
+
+<hr />
+<div class="row">
+    <div class="card col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-1">
+                    <label asp-for="ItemCode" class="control-label"></label>
+                    <input asp-for="ItemCode" class="form-control" />
+                    <span asp-validation-for="ItemCode" class="text-danger"></span>
+                </div>
+                <div class="form-group col-3">
+                    <label asp-for="Name" class="control-label"></label>
+                    <textarea cols="25" rows="2" asp-for="Name" class="form-control"></textarea>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-2">
+                    <label asp-for="UnitsId" class="control-label"></label>
+                    <select asp-for="UnitsId" class="form-control" asp-items="ViewBag.UnitsId"></select>
+                </div>
+                <div class="form-group col-2">
+                    <label asp-for="Count" class="control-label"></label>
+                    <input asp-for="Count" class="form-control" />
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-2">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-2">
+                    <label asp-for="BuyPrice" class="control-label"></label>
+                    <input asp-for="BuyPrice" class="form-control" />
+                    <span asp-validation-for="BuyPrice" class="text-danger"></span>
+                </div>
+            </div>
+          
+        
+            @*<div class="form-group">
+                <label asp-for="MonafsaId" class="control-label"></label>
+                <select asp-for="MonafsaId" class ="form-control " asp-items="ViewBag.MonafsaId"  ></select>
+            </div>*@
+            <div>
+                <input type="hidden" asp-for="MonafsaId" />
+            </div>
+      
+            <div class="form-group">
+                <input type="submit" value="انشاء" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,122 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Monafasati.Core.Entity.Monafsa
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card text-right">
+        <div class="card-header bg-info text-uppercase text-white">
+            <h4>تعديل مناقصة </h4>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="Edit">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="PdfFile">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" readonly />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Advertiser" class="control-label"></label>
+                            <input asp-for="Advertiser" class="form-control " readonly/>
+                            <span asp-validation-for="Advertiser" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="LastDate" class="control-label"></label>
+                            <input asp-for="LastDate" class="form-control" readonly/>
+                            <span asp-validation-for="LastDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control" readonly/>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="StatuId" class="control-label"></label>
+                            <select asp-for="StatuId" class="form-control" asp-items="ViewBag.StatuId"></select>
+                        </div>
+
+                    </div>
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="EngineerId" class="control-label"></label>
+                                <select asp-for="EngineerId" class="form-control" asp-items="ViewBag.EngineerId" ></select>
+                            </div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="EngineerId" class="control-label"></label>
+                                <input type="hidden" asp-for="EngineerId" />
+                                <select asp-for="EngineerId" class="form-control" asp-items="ViewBag.EngineerId" disabled></select>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Sadad" class="control-label"></label>
+                            <input asp-for="Sadad" class="form-control" readonly />
+                            <span asp-validation-for="Sadad" class="text-danger"></span>
+                        </div>
+                    </div>
+              
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Note" class="control-label"></label>
+                            <input type="text" asp-for="Note" class="form-control" />
+                            <span asp-validation-for="Note" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="حفظ" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn  btn-primary">عودة</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}
